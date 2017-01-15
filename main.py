@@ -59,9 +59,9 @@ def base_64_encoder(n, b=64):
 
 def base_64_decoder(num, b=64):
     """Takes in an base64 encoded string and returns a decoded integer"""
-    base = s.lowercase + s.uppercase + s.digits
-    res = 0
-    for i in xrange(len(num)):
+    base = s.lowercase + s.uppercase + s.digits         # base string comprised of letters and digits
+    res = 0                                             # result intialized at 0
+    for i in xrange(len(num)):                          # loop through num and decode integer                         
         res = b * res + base.find(num[i])
     return res
 
