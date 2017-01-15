@@ -9,7 +9,7 @@ import base64 as base64                                      # Base64 encoding f
 
 app = Flask(__name__)
 api = Api(app)
-host = 'ec2-52-53-236-161.us-west-1.compute.amazonaws.com'                              # URL for DB access
+host = 'ec2-52-53-236-161.us-west-1.compute.amazonaws.com'                              # Host URL
 
 
 
