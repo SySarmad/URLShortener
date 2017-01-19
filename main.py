@@ -9,7 +9,7 @@ import base64 as base64                                      # Base64 encoding f
 
 app = Flask(__name__)
 api = Api(app)
-host = 'ec2-52-53-236-161.us-west-1.compute.amazonaws.com'                              # Host URL
+host = 'XXXXXX'                              # Host URL
 
 
 
@@ -21,7 +21,7 @@ def check_table():
     create_index = """CREATE UNIQUE INDEX URLS_ID_uindex ON my_db.URLS (ID) """
 
     # DB connection and Cursor intialized
-    mariadb_connection = mariadb.connect(host='mydibinstance.c3odauswfp7h.us-west-1.rds.amazonaws.com', port=3306, user='root', passwd='akmalsarm12', db='my_db')
+    mariadb_connection = mariadb.connect(host='XXXXX', port=3306, user='root', passwd='XXXXXXX', db='my_db')
     cursor = mariadb_connection.cursor()
     try:
         # Execute and commit Create table and Create Index SQL Statements
@@ -74,7 +74,7 @@ def index():
         if urlparse(initial_url).scheme == '':    # Check if URL is a correct url if not prepend 'http://
             initial_url = 'http://' + initial_url
         # Connect to DB, create Cursor and build insert query with base64encoded URL for insert into DB
-        mariadb_connection = mariadb.connect(host='mydibinstance.c3odauswfp7h.us-west-1.rds.amazonaws.com', port=3306, user='root', passwd='akmalsarm12', db='my_db')
+        mariadb_connection = mariadb.connect(host='XXXXX', port=3306, user='root', passwd='XXXXXXX', db='my_db')
         cursor = mariadb_connection.cursor()
         insert_row = """INSERT INTO URLS (URL) VALUES ('{}')""".format(base64.urlsafe_b64encode(initial_url))
         try:
@@ -95,7 +95,7 @@ def link_to_url(short_url):
     decoded_string = base_64_decoder(short_url)      # Base64 decoded string holds str rep of an int
 
     # Connect to DB, create cursor and build select query using decoded string
-    mariadb_connection = mariadb.connect(host='mydibinstance.c3odauswfp7h.us-west-1.rds.amazonaws.com', port=3306, user='root', passwd='akmalsarm12', db='my_db')
+    mariadb_connection = mariadb.connect(host='XXXXX', port=3306, user='root', passwd='XXXXXXX', db='my_db')
     cursor = mariadb_connection.cursor()
     select_row = """SELECT URL FROM URLS WHERE ID= {}""".format(decoded_string)
     try:
